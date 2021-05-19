@@ -1,0 +1,2 @@
+2021/05/18 14:48:54 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET /wordpress HTTP/1.1", upstream: "http://172.18.0.4:9000/wordpress", host: "localhost"
+2021/05/18 14:49:28 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET /wordpress HTTP/1.1", upstream: "http://172.18.0.4:9000/wordpress", host: "localhost"
