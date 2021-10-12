@@ -1,15 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lothieve <lothieve@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/07/27 18:32:58 by lothieve          #+#    #+#              #
+#    Updated: 2021/10/05 14:51:45 by lothieve         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 FROM alpine
 
-RUN apk update; apk add nginx wget
-RUN adduser -D -g 'www' www;\
-    mkdir /var/run/nginx;
-RUN echo nameserver 8.8.8.8 > /etc/resolv.conf;\
-	wget -O mkcert 'https://github.com/FiloSottile/mkcert/releases/download/v1.4.3/mkcert-v1.4.3-linux-amd64';\
-	chmod +x mkcert
-RUN ./mkcert -install
-RUN	./mkcert localhost
+RUN apk add nginx;
 
-COPY index.html /var/www/localhost/
-RUN rm -rf /etc/nginx/http.d
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-ENTRYPOINT nginx -g "daemon off;"
+ENTRYPOINT nginx
