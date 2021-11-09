@@ -4,6 +4,7 @@ services:
     build: ./requirements/mariadb
     volumes:
       - ./requirements/mariadb/conf:/var/lib/mysql
+      - ./requirements/mariadb/mariadb-server.cnf:/etc/my.cnf.d/mariadb-server.cnf
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PW}
       MYSQL_DATABASE: inception
@@ -30,9 +31,10 @@ services:
   nginx:
     build: ./requirements/nginx/
     volumes:
-      - ./requirements/nginx/conf/conf.d:/etc/nginx/conf.d
+      - ./requirements/nginx/conf/lothieve.conf:/etc/nginx/conf.d/lothieve.conf
       - ./requirements/wordpress/data/:/var/www/html
     ports:
-      - 8080:80
+      - 80:80
+      - 443:443
     links:
       - wordpress
