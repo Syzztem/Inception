@@ -12,6 +12,7 @@
 
 FROM alpine
 
+RUN apk add -U tzdata; cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime;
 RUN apk --update add php7 php7-fpm php7-opcache php7-json php7-mysqli
 COPY wp-entrypoint.sh /usr/bin
 COPY wp-config-template.txt ./

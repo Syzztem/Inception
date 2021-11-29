@@ -3,7 +3,7 @@ services:
   mysql:
     build: ./requirements/mariadb
     volumes:
-      - ./requirements/mariadb/conf:/var/lib/mysql
+      - /home/lothieve/data/db:/var/lib/mysql
       - ./requirements/mariadb/mariadb-server.cnf:/etc/my.cnf.d/mariadb-server.cnf
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PW}
@@ -17,7 +17,7 @@ services:
   wordpress:
     build: ./requirements/wordpress
     volumes:
-      - ./requirements/wordpress/data/:/var/www/html
+      - /home/lothieve/data/wp:/var/www/html
       - ./requirements/wordpress/www.conf/:/etc/php7/php-fpm.d/www.conf
     depends_on:
       - mysql

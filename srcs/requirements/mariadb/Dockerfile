@@ -12,6 +12,8 @@
 
 FROM alpine
 
+RUN apk add -U tzdata; cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime;
+
 RUN apk add mariadb; \
 	mkdir /run/mysqld; \
 	chown mysql /run/mysqld; \
