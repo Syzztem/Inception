@@ -38,7 +38,6 @@ services:
       - ./requirements/nginx/conf/lothieve.conf:/etc/nginx/conf.d/lothieve.conf
       - ./requirements/wordpress/data/:/var/www/html
     ports:
-      - 80:80
       - 443:443
     networks:
       - inception
