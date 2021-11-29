@@ -11,6 +11,9 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     restart: always
+    networks:
+      - inception
+    container_name: mysql
   wordpress:
     build: ./requirements/wordpress
     volumes:
@@ -25,8 +28,9 @@ services:
       WORDPRESS_DB_USER: ${MYSQL_USER}
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_TABLE_PREFIX: wp_
-    links:
-      - mysql
+    networks:
+      - inception
+    container_name: wordpress
     restart: always
   nginx:
     build: ./requirements/nginx/
@@ -36,5 +40,9 @@ services:
     ports:
       - 80:80
       - 443:443
-    links:
-      - wordpress
+    networks:
+      - inception
+    container_name: nginx
+
+networks:
+  inception:

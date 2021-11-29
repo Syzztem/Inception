@@ -17,6 +17,6 @@ RUN apk add mariadb; \
 	chown mysql /run/mysqld; \
 	mysql_install_db --user=mysql --datadir=/var/lib/mysql --auth-root-authentication-method=normal
 
-CMD mysqld --user=mysql
+CMD chown -R mysql /var/lib/mysql; mysqld --user=mysql
 
 EXPOSE 3306
